@@ -1,0 +1,16 @@
+name: zentao
+run-name: ${{ github.event.client_payload.ZT_RUN_NAME }}
+
+on:
+  repository_dispatch:
+    types: [zentao]
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print payload
+        env:
+          PAYLOAD: ${{ toJSON(github.event.client_payload) }}
+        run: echo "$PAYLOAD"
+
